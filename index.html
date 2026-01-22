@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hideout Restobar | Guelph, ON</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- AOS Library for Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-gold: #c5a059;
+            --dark-bg: #121212;
+            --soft-bg: #1a1a1a;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: #ffffff;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .gold-text { color: var(--primary-gold); }
+        .gold-bg { background-color: var(--primary-gold); }
+        .gold-border { border-color: var(--primary-gold); }
+
+        /* Custom underline animation */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-gold);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Parallax effect simulation */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-item:hover .item-price {
+            transform: scale(1.1);
+            color: var(--primary-gold);
+        }
+
+        /* Map filter to match dark theme */
+        .map-container iframe {
+            filter: grayscale(1) invert(0.9) contrast(1.2);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 px-6 py-4 transition-all duration-300" id="main-nav">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-serif font-bold tracking-widest uppercase">
+                Hideout<span class="gold-text text-sm block">Restobar</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8 uppercase text-xs tracking-widest font-semibold">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#menu" class="nav-link">Menu</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+
+            <a href="#reservation" class="hidden md:block gold-bg text-black px-6 py-2 rounded-full text-xs font-bold uppercase tracking-tighter hover:bg-white transition-colors">
+                Book a Table
+            </a>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-2xl" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section h-screen flex items-center justify-center text-center px-4">
+        <div data-aos="zoom-in" data-aos-duration="1500">
+            <h4 class="gold-text uppercase tracking-[0.5em] mb-4 text-sm font-semibold">Welcome to the Hideout</h4>
+            <h1 class="text-5xl md:text-8xl font-bold mb-6">Exquisite Dining <br> & Craft Spirits</h1>
+            <p class="max-w-xl mx-auto text-gray-300 mb-8 font-light italic">
+                Located at the heart of Guelph, inside the historic Royal Inn and Suites.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#menu" class="border gold-border gold-text px-10 py-4 hover:bg-white hover:text-black hover:border-white transition-all duration-300">
+                    Explore Menu
+                </a>
+                <a href="#reservation" class="gold-bg text-black px-10 py-4 font-bold hover:bg-white transition-all duration-300">
+                    Reserve Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 bg-[#0a0a0a]">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <div class="relative">
+                    <img src="https://i.imgur.com/0sGW74E.png" alt="Restaurant Interior - Hideout Restobar" class="rounded-lg shadow-2xl w-full object-cover h-[500px]">
+                    <div class="absolute -bottom-8 -right-8 w-48 h-48 border-4 gold-border hidden lg:block"></div>
+                </div>
+            </div>
+            <div data-aos="fade-left">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 italic">The Hidden Gem <br>of Guelph</h2>
+                <p class="text-gray-400 mb-6 leading-relaxed">
+                    Hideout Restobar combines the charm of the historic Royal Inn and Suites with a contemporary culinary approach. Our mission is to provide an intimate escape where flavor meets elegance.
+                </p>
+                <p class="text-gray-400 mb-8 leading-relaxed">
+                    Whether you're looking for a sophisticated cocktail after work or a multi-course dinner with friends, our chefs use locally sourced ingredients to create unforgettable experiences.
+                </p>
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="gold-text text-3xl font-serif mb-1">106</h4>
+                        <p class="text-xs uppercase tracking-widest text-gray-500">Carden St Location</p>
+                    </div>
+                    <div>
+                        <h4 class="gold-text text-3xl font-serif mb-1">20+</h4>
+                        <p class="text-xs uppercase tracking-widest text-gray-500">Signature Cocktails</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Preview -->
+    <section id="menu" class="py-24 px-6 bg-zinc-900">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h4 class="gold-text uppercase tracking-widest text-sm mb-4">Chef's Recommendations</h4>
+                <h2 class="text-4xl md:text-5xl font-bold">Seasonal Menu</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-x-16 gap-y-12">
+                <div class="menu-item flex justify-between items-end border-b border-zinc-800 pb-4" data-aos="fade-up">
+                    <div class="flex-1 pr-4">
+                        <h3 class="text-xl font-serif mb-1">Truffle Arancini</h3>
+                        <p class="text-sm text-gray-500">Wild mushrooms, parmesan, truffle aioli.</p>
+                    </div>
+                    <span class="item-price gold-text font-bold transition-all duration-300">$16</span>
+                </div>
+                <div class="menu-item flex justify-between items-end border-b border-zinc-800 pb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex-1 pr-4">
+                        <h3 class="text-xl font-serif mb-1">Seared Scallops</h3>
+                        <p class="text-sm text-gray-500">Cauliflower purée, pancetta crisp, herb oil.</p>
+                    </div>
+                    <span class="item-price gold-text font-bold transition-all duration-300">$22</span>
+                </div>
+                <div class="menu-item flex justify-between items-end border-b border-zinc-800 pb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex-1 pr-4">
+                        <h3 class="text-xl font-serif mb-1">Prime Ribeye</h3>
+                        <p class="text-sm text-gray-500">12oz grass-fed beef, roasted root veg, red wine jus.</p>
+                    </div>
+                    <span class="item-price gold-text font-bold transition-all duration-300">$48</span>
+                </div>
+                <div class="menu-item flex justify-between items-end border-b border-zinc-800 pb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex-1 pr-4">
+                        <h3 class="text-xl font-serif mb-1">Maple Glazed Salmon</h3>
+                        <p class="text-sm text-gray-500">Quinoa pilaf, asparagus, citrus reduction.</p>
+                    </div>
+                    <span class="item-price gold-text font-bold transition-all duration-300">$34</span>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12" data-aos="fade-up">
+                <button class="text-xs font-bold uppercase tracking-[0.3em] border-b-2 gold-border pb-2 hover:text-gray-400 transition-colors">
+                    View Full Menu (PDF)
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 px-4 bg-black">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+            <div class="overflow-hidden group" data-aos="flip-left">
+                <img src="https://images.unsplash.com/photo-1574096079513-d8259312b785?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-80 object-cover grayscale hover:grayscale-0 transition-all duration-700 transform group-hover:scale-110">
+            </div>
+            <div class="overflow-hidden group" data-aos="flip-left" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-80 object-cover grayscale hover:grayscale-0 transition-all duration-700 transform group-hover:scale-110">
+            </div>
+            <div class="overflow-hidden group" data-aos="flip-left" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-80 object-cover grayscale hover:grayscale-0 transition-all duration-700 transform group-hover:scale-110">
+            </div>
+            <div class="overflow-hidden group" data-aos="flip-left" data-aos-delay="300">
+                <img src="https://images.unsplash.com/photo-1544145945-f904253d0c7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-80 object-cover grayscale hover:grayscale-0 transition-all duration-700 transform group-hover:scale-110">
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation" class="py-24 px-6 bg-[#0a0a0a]">
+        <div class="max-w-4xl mx-auto glass-card p-8 md:p-16 rounded-2xl" data-aos="fade-up">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-serif mb-4 italic">Make a Reservation</h2>
+                <p class="text-gray-400">Join us for an evening of culinary delight.</p>
+            </div>
+            
+            <form class="grid md:grid-cols-2 gap-6" onsubmit="event.preventDefault();">
+                <div>
+                    <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Full Name</label>
+                    <input type="text" class="w-full bg-transparent border-b border-zinc-700 py-3 focus:border-[#c5a059] outline-none text-white transition-all">
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Email Address</label>
+                    <input type="email" class="w-full bg-transparent border-b border-zinc-700 py-3 focus:border-[#c5a059] outline-none text-white transition-all">
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Guests</label>
+                    <select class="w-full bg-transparent border-b border-zinc-700 py-3 focus:border-[#c5a059] outline-none text-white transition-all">
+                        <option class="bg-black">2 People</option>
+                        <option class="bg-black">3 People</option>
+                        <option class="bg-black">4 People</option>
+                        <option class="bg-black">5+ People</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Date</label>
+                    <input type="date" class="w-full bg-transparent border-b border-zinc-700 py-3 focus:border-[#c5a059] outline-none text-white transition-all">
+                </div>
+                <div class="md:col-span-2 mt-8">
+                    <button type="submit" class="w-full gold-bg text-black font-bold py-4 uppercase tracking-widest hover:bg-white transition-all">
+                        Confirm Booking
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact & Map Section -->
+    <section id="contact" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+            <div data-aos="fade-right">
+                <h2 class="text-4xl font-serif mb-8 italic">Find Us</h2>
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <i class="fas fa-map-marker-alt gold-text mt-1"></i>
+                        <div>
+                            <p class="font-bold">Address</p>
+                            <p class="text-gray-400">106 Carden St Ground Floor, <br>Guelph, ON N1H 3A3 <br>Royal Inn and Suites</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <i class="fas fa-phone gold-text mt-1"></i>
+                        <div>
+                            <p class="font-bold">Phone</p>
+                            <p class="text-gray-400">+1 (519) 824-6030</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <i class="fas fa-clock gold-text mt-1"></i>
+                        <div>
+                            <p class="font-bold">Opening Hours</p>
+                            <p class="text-gray-400">Mon - Thu: 4:00 PM - 11:00 PM</p>
+                            <p class="text-gray-400">Fri - Sat: 4:00 PM - 1:00 AM</p>
+                            <p class="text-gray-400">Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div data-aos="fade-left" class="map-container h-80 md:h-full min-h-[400px] rounded-2xl overflow-hidden border border-zinc-800 shadow-xl">
+                <!-- Corrected Google Map with specific location -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2892.484738426034!2d-80.2483584!3d43.5443226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b9ad091648a9f%3A0xc3f3a8b4c0b4f884!2s106%20Carden%20St%2C%20Guelph%2C%20ON%20N1H%203A3!5e0!3m2!1sen!2sca!4v1705953000000!5m2!1sen!2sca" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-black border-t border-zinc-900 text-center">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-2xl font-serif font-bold tracking-widest uppercase mb-8">
+                Hideout<span class="gold-text text-sm block">Restobar</span>
+            </div>
+            <div class="flex justify-center space-x-6 mb-8 text-xl">
+                <a href="#" class="hover:text-[#c5a059] transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-[#c5a059] transition-colors"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-[#c5a059] transition-colors"><i class="fab fa-tripadvisor"></i></a>
+            </div>
+            <p class="text-xs text-gray-600 uppercase tracking-widest">
+                &copy; 2024 Hideout Restobar. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Use window.onload to ensure AOS library is fully loaded before initialization
+        window.onload = function() {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 1000,
+                    once: true,
+                    easing: 'ease-out-quad'
+                });
+            }
+
+            // Navbar Scroll Effect
+            const nav = document.getElementById('main-nav');
+            window.onscroll = function() {
+                if (window.scrollY > 50) {
+                    nav.classList.add('bg-black/90', 'py-2', 'backdrop-blur-md', 'shadow-2xl');
+                    nav.classList.remove('py-4');
+                } else {
+                    nav.classList.remove('bg-black/90', 'py-2', 'backdrop-blur-md', 'shadow-2xl');
+                    nav.classList.add('py-4');
+                }
+            };
+
+            // Mobile Menu logic
+            const btn = document.getElementById('mobile-menu-btn');
+            btn.onclick = () => {
+                const menu = document.querySelector('.md\\:flex.space-x-8');
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+                menu.classList.toggle('flex-col');
+                menu.classList.toggle('absolute');
+                menu.classList.toggle('top-16');
+                menu.classList.toggle('left-0');
+                menu.classList.toggle('w-full');
+                menu.classList.toggle('bg-black');
+                menu.classList.toggle('p-6');
+                menu.classList.toggle('space-y-4');
+                menu.classList.toggle('items-center');
+            };
+        };
+    </script>
+</body>
+</html>
